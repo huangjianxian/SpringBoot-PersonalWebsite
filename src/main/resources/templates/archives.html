@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+<div class="container hjx-responsive-container">
+    <div class="row">
+        <ul class="breadcrumb hjx-margin-bottom">
+            <div class="active">归档<span style="float: right">共<strong style="color: #38b7ea;" th:text="${blogCount}"></strong>篇文章</span></div>
+        </ul>
+    </div>
+    <!--归档文章-->
+    <div class="row">
+        <th:block th:each="item : ${archiveMap}">
+            <h3 class="text-center" th:text="${item.key}">2019</h3>
+            <ul class="list-group">
+                <th:block th:each="blog : ${item.value}">
+                    <li class="list-group-item">
+                        <span class="badge" th:text="${#dates.format(blog.createTime,'MM-dd')}"></span>
+                        <a th:href="'/blog/' + ${blog.id}" th:text="${blog.title}"></a>
+                    </li>
+                </th:block>
+            </ul>
+        </th:block>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mainContainer">
+    <div class="timeline-box">
+        <div class="hjx-tl" th:each="blogs : ${categoryModel.blogs}">
+            <div class="hjx-tl-row">
+                <span class="hjx-tl-node"></span>
+                <div class="hjx-tl-content">
+                    <a th:text="${blogs.title}">2019春招-字节跳动面试</a><br>
+                    <a th:text="${blogs.createTime}">2019-03-04</a>
+                    <a th:text="${blogs.catalog.name}">面试</a>
+                    <a>春招</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

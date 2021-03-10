@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <!--文章内容区域-->
+                        <div class="col-lg-12">
+                            <span class="badge hjx-font-sm" th:text="${blog.flag.name}">原创</span>
+                            <div class="text-center hjx-font-lg hjx-margin-bottom" th:text="${blog.title}">
+                                博客标题
+                            </div>
+                            <div class="text-center">
+                                <div class="hjx-info">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-time"></use>
+                                    </svg>
+                                    <span th:text="${#dates.format(blog.createTime,'YYYY-MM-dd')}" class="hjx-margin-right">2019-03-29</span>
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-zuozhe"></use>
+                                    </svg>
+                                    <span class="hjx-margin-right" th:text="${blog.user.nickname}">jontyhua</span>
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-fenlei"></use>
+                                    </svg>
+                                    </i><a th:text="${blog.category.name}" class="hjx-margin-right">面试</a>
+                                </div>
+                            </div>
+                            <div id="blog-content" class="hjx-padding" th:utext="${blog.htmlContent}">
+                                博客内容
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hjx-padding">
+                        <div class="col-lg-12">
+                            <div class="hjx-margin-bottom">
+                                <span>标签：</span>
+                                <th:block th:each="tag : ${blog.tags}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-biaoqian"></use>
+                                    </svg>
+                                    <a th:href="'/?keyword='+ ${tag.name}" th:text="${tag.name}"></a>
+                                </th:block>
+                            </div>
+                            <blockquote class="hjx-font-mini" style="width: 100%;" th:if="${blog.copyrightState} == true">
+                                <div>本文作者：<span>Jonty Hua</span></div>
+                                <div>原文链接：<a>https://www.jontyhua.com/blog/15744678</a></div>
+                                <div>版权声明：本博客所有文章除特别声明外，均采用<a>CC BY 3.0 CN</a>协议进行许可。转载请署名作者且注明文章出处。</div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="row hjx-margin-top" th:unless="${blog.flag.name} == '转载'">
+                        <div class="col-lg-12 text-center">
+                            <a class="btn btn-default btn-danger " role="button" data-toggle="collapse" href="#collapseExample"
+                               aria-expanded="false" aria-controls="collapseExample">
+                                赞赏
+                            </a>
+                            <div class="collapse hjx-margin-top" id="collapseExample">
+                                <div class="well hjx-container-mini center-block hjx-container-xs">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="thumbnail">
+                                                <img src="../../images/weixin.jpg" alt="...">
+                                            </div>
+                                            <label>支付宝</label>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="thumbnail">
+                                                <img src="../../images/weixin.jpg" alt="...">
+                                            </div>
+                                            <label>微信</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--评论部分-->
+                    <div class="row hjx-margin-top hjx-margin-bottom">
+                        <div class="col-lg-12 col-xs-12" id="comment-container">
+                            <label class="hjx-margin-right hjx-margin-bottom">评论一下吧~</label><i class="iconfont icon-wechat hjx-i"></i>
+                            <textarea class=" form-control hjx-textarea" id="commentContent" rows="3" placeholder="亲爱的伙伴，说两句吧~"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 text-right">
+                            <th:block sec:authorize="isAuthenticated()">
+                                <button class="btn btn-primary float-right" th:if="${currentVote} == null" id="submitVote">点赞</button>
+                                <button class="btn btn-primary float-right" th:if="${currentVote}" th:attr="voteId=${currentVote.id}" id="cancelVote">取消点赞</button>
+                                <button type="button" class="btn btn-primary" id="submitComment">提交评论</button>
+                            </th:block>
+                            <th:block sec:authorize="isAnonymous()">
+                                <a role="button" th:href="@{/login}" type="button" class="btn btn-danger">请先登录...</a>
+                            </th:block>
+                        </div>
+                    </div>
+                    <input type="hidden" name="blog.id" th:value="${blog.id}" id="blogId">
+                    <input type="hidden" name="parentComment.id" value="-1" id="parentCommentId">
+                    <div class="row hjx-margin-top" th:if="${#arrays.length(blog.comments)} > 0">
+                        <div class="col-lg-12">
+                            <div>
+                                <!--/* Nav tabs */-->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">最新评论</a></li>
+                                </ul>
+                                <!--/* Tab panes */-->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="home">
+                                        <div class="row hjx-margin-top" th:each="comment : ${comments}" id="mainContainer">
+                                            <div class="col-lg-1 col-md-1 col-xs-2 col-sm-1 hjx-padding-mini">
+                                                <img class="img-circle hjx-about-img" th:src="${comment.user.avatarurl} == null ? '../../images/avatar.jpg' : ${comment.user.avatarurl}"/>
+                                            </div>
+                                            <div class="col-lg-11 col-md-11 col-xs-10 col-sm-11">
+                                                <div class="hjx-margin-bottom hjx-font-default">
+                                                    <span class="hjx-margin-right" th:text="${comment.user.nickname}">华瑾熙</span>
+                                                    <span class="label label-primary hjx-margin-right" th:if="${comment.user.username} == 'jontyhua'">博主</span>
+                                                    <span class="hjx-margin-right" th:text="${comment.id}">#2楼</span>
+                                                    <a data-commentid="1" data-commentnickname="jontyhua" class="reply"
+                                                       th:attr="data-commentid=${comment.id},data-commentnickname=${comment.user.nickname}">回复</a>
+                                                    <span class="hjx-margin-right hjx-right hidden-xs" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">2019-03-30 19:27</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-margin-left">
+                                                    <p class="hjx-font-mini" th:text="${comment.content}">
+                                                    </p>
+                                                    <span class="hjx-font-mini visible-xs"  th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">2019-03-30 19:27</span>
+                                                </div>
+                                                <blockquote class="hjx-font-mini" th:if="${#arrays.length(comment.replyComments)} > 0">
+                                                    <th:block th:each="reply : ${comment.replyComments}">
+                                                        <div class="hjx-panel-border hjx-margin-bottom">
+                                                            <a class="hjx-margin-right-small" th:text="${reply.user.nickname}">lvy</a>
+                                                            <span class="label label-primary" th:if="${reply.user.username} == 'jontyhua'">博主</span>
+                                                            <span class="hjx-margin-right-small">@</span>
+                                                            <a class="hjx-margin-right-small" th:text="${reply.parentComment.user.nickname}">lvy</a>
+                                                            <p class="hjx-margin-top" th:text="${reply.content}">
+                                                            </p>
+                                                            <span th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">2019-03-30 19:27</span>
+                                                            <a data-commentid="1" data-commentnickname="jontyhua" class="reply"
+                                                               th:attr="data-commentid=${reply.id},data-commentnickname=${reply.user.nickname}">回复</a>
+                                                        </div>
+                                                    </th:block>
+                                                </blockquote>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/footer :: footer}">...</div>
+<script src="../static/js/blog.js" th:src="@{/js/blog.js}" type="text/javascript"></script>
+</body>
+</html>

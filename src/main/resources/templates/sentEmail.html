@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<!--/*container*/-->
+<div style="margin: 0 auto;width: 80%;">
+    <div style="text-align: center;">
+        <h2>欢迎注册Jonty Hua | 华瑾熙 Website</h2>
+    </div>
+    <!--/*content*/-->
+    <div style="background-color: #C7EDCC;border: white solid 1px;border-radius:8px;box-shadow: 10px 10px 5px #888888;text-align: center;">
+        <div class="jumbotron" style="padding:40px;">
+            <h4 style="line-height:1.4;">Hello！亲爱的用户<span th:text="${username}" style="margin: 0 5px;font-size: 20px;color: #2e6da4">jonty</span>，您好！这是您的验证邮件，请点击下面的按钮完成邮箱验证。来与我交流吧~</h4>
+            <div class="text-center" style="margin-top: 35px;margin-bottom: 35px;">
+                <button style="color: #fff;background-color: #337ab7;border-color: #2e6da4;padding: 10px 16px;font-size: 15px;line-height: 1.3333333;border-radius: 6px;">
+                    <a style="color: white" th:href="@{http://localhost:8081/activation/{email}/{code}(email=${email},code=${code})}">激活账号</a>
+                </button>
+            </div>
+            <div>
+                <a href="https://www.jontyhua.com">https://www.jontyhua.com</a>
+                <br>
+                <div style="margin-top: 10px;">@JontyHua</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

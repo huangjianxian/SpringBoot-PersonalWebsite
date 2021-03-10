@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="keywords" content="博客,个人,学习,IT,生活,华瑾熙,Jonty Hua,程序,springboot,java,后端,全栈">
+    <meta name="description" content="Jonty Hua,1998,编程.专注于Spring,SpringBoot等后端技术探索,以及MySql数据库开发,SSH等后端流行框架学习">
+
+    <title>Jonty Hua | 华瑾熙</title>
+    <!--/* Bootstrap CSS */-->
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+
+    <!--/*index.css*/-->
+    <link href="../../static/css/index.css" rel="stylesheet">
+
+    <link href="../../static/css/common.css" rel="stylesheet">
+
+    <link href="../../static/css/bootstrap-datepicker.css" rel="stylesheet">
+
+    <link href="../../static/css/validation.css" rel="stylesheet">
+
+    <link href="../../static/css/register.css" rel="stylesheet">
+
+    <link href="../../static/css/toastr.css" rel="stylesheet">
+    <!--/*分类页面*/-->
+    <link href="../../static/css/categories.css" rel="stylesheet">
+    <!--阿里云图标-->
+    <link href="../../static/iconfont/iconfont.css" rel="stylesheet">
+    <!--引入页脚css-->
+    <link href="../../static/css/footer.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 hjx-padding-mini">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <!--文章内容区域-->
+                        <div class="col-lg-12 hjx-border-bottom">
+                            <span class="badge hjx-flag">原创</span>
+                            <div class="text-center hjx-text-big">
+                                在IntelliJ IDEA 2018上配置Tomcat并运行第一个JavaWeb项目
+                            </div>
+                            <div class="text-center">
+                                <div class="hjx-info">
+                                    <i class="iconfont icon-wechat hjx-i"></i><span>2019-03-29</span>
+                                    <i class="iconfont icon-wechat hjx-i"></i><span>jontyhua</span>
+                                    <i class="iconfont icon-wechat hjx-i"></i><a>面试</a>
+                                </div>
+                            </div>
+                            <div class="hjx-padding-lr">
+                                <h3><a id="1_Java_0"></a>1 Java的概念</h3>
+                                <p>Java是广泛使用的编程语言，广泛应用于企业级web应用开发和移动应用开发。它不仅吸收了C++的各种优点，还去除了C++中的多继承、指针等概念，使得Java学习和应用变得简单起来。</p>
+                                <h3><a id="2__4"></a>2 面向对象与面向过程</h3>
+                                <h4><a id="21__5"></a>2.1 面向过程</h4>
+                                <p>面向过程是把所要分析解决的问题分成很多个步骤，然后用函数把这些步骤一步一步实现，使用的时候依次调用；优点是性能高，但是不易复用、维护和扩展。</p>
+                                <h4><a id="22__8"></a>2.2 面向对象</h4>
+                                <p>面向对象是把构成问题事务分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个事物在整个解决问题的步骤中的行为。面向对象是以功能来划分问题，而不是步骤。</p>
+                                <h4><a id="23__11"></a>2.3 两者区别</h4>
+                                <p>举个简单的例子：面向过程是自己制造电脑，要自己做cpu做内存卡一步一步把所有东西完成。而面向对象是买回来所有的硬件等物件来组装一台电脑。</p>
+                                <h3><a id="3_Java_14"></a>3 Java特点</h3>
+                                <p>1、平台无关性：平台无关性是Java最大的一个特点，在Windows、Linux、MacOS以及其他平台上都可以使用相同的代码。可以实现“一次编写，到处执行”。<br>
+                                    2、可靠性。<br>
+                                    3、安全性。<br>
+                                    4、支持多线程。</p>
+                                <h3><a id="4_JDKJREJVM_20"></a>4 JDK、JRE、JVM的联系与区别</h3>
+                                <p>JDK（Java Development Kit）是针对Java开发员的产品，包括了Java运行环境JRE、Java工具和Java基础类库。JRE（Java Runtime Environment）是运行JAVA程序所必须的环境的集合，包含JVM标准实现及Java核心类库。JVM（Java Virtual Machine）是Java虚拟机的缩写，是整个java实现跨平台的最核心的部分，能够运行以Java语言写作的软件程序。<br>
+                                    简单来说：<br>
+                                    JDK是用于开发的而JRE是用于运行Java程序的。<br>
+                                    JDK和JRE都包含了JVM，从而使得我们可以运行Java程序。<br>
+                                    JVM是Java编程语言的核心并且具有平台独立性。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hjx-padding">
+                        <div class="col-lg-12">
+                            <div class="hjx-margin-bottom">
+                                <span>标签：</span>
+                                <i class="iconfont icon-wechat hjx-i"></i><a>Java</a>
+                                <i class="iconfont icon-wechat hjx-i"></i><a>基本知识</a>
+                                <i class="iconfont icon-wechat hjx-i"></i><a>spring</a>
+                            </div>
+                            <div class="hjx-border-left-danger hjx-bg-default hjx-padding">
+                                <div>本文作者：<span>Jonty Hua</span></div>
+                                <div>原文链接：<a>https://www.jontyhua.com/blog/15744678</a></div>
+                                <div>版权声明：本博客所有文章除特别声明外，均采用<a>CC BY 3.0 CN</a>协议进行许可。转载请署名作者且注明文章出处。</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hjx-margin-top">
+                        <div class="col-lg-12 text-center">
+                            <a class="btn btn-lg btn-danger" role="button" data-toggle="collapse" href="#collapseExample"
+                               aria-expanded="false" aria-controls="collapseExample">
+                                赞赏
+                            </a>
+                            <div class="collapse hjx-margin-top" id="collapseExample">
+                                <div class="well hjx-container-mini center-block hjx-container-xs">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="thumbnail">
+                                                <img src="../../static/images/weixin.jpg" alt="...">
+                                            </div>
+                                            <label>支付宝</label>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="thumbnail">
+                                                <img src="../../static/images/weixin.jpg" alt="...">
+                                            </div>
+                                            <label>微信</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--评论部分-->
+                    <div class="row hjx-margin-top">
+                        <div class="col-lg-12 col-xs-12">
+                            <label class="hjx-margin-right">评论一下吧~</label><i class="iconfont icon-wechat hjx-i"></i>
+                            <textarea class="hjx-border hjx-textarea hjx-padding" name="a" placeholder="亲爱的伙伴，说两句吧~"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-xs-12 text-right">
+                            <button type="button" class="btn btn-primary">点赞</button>
+                            <button type="button" class="btn btn-primary">提交</button>
+                            <button type="button" class="btn btn-primary">登录</button>
+                            <button type="button" class="btn btn-default">注册</button>
+                        </div>
+                    </div>
+                    <div class="row hjx-margin-top">
+                        <div class="col-lg-12">
+                            <div>
+                                <!--/* Nav tabs */-->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">最新留言</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">热门留言</a></li>
+                                </ul>
+                                <!--/* Tab panes */-->
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active" id="home">
+                                        <div class="row hjx-margin-top">
+                                        <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                            <div>
+                                                <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                            <div class="hjx-margin-bottom hjx-text-middle">
+                                                <span class="hjx-margin-right ">华瑾熙</span>
+                                                <span class="hjx-margin-right">#2楼</span>
+                                                <span class="hjx-margin-right right">2019-03-30</span>
+                                            </div>
+                                            <div class="hjx-margin-bottom hjx-text-small">
+                                                <span>留言：test</span>
+                                            </div>
+                                            <div class="hjx-margin-bottom">
+                                                <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                            </div>
+                                            <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                <span class="hjx-margin-right-small">lvy</span>
+                                                <span class="hjx-margin-right-small">回复</span>
+                                                <span class="hjx-margin-right-small">lvy</span>
+                                                ：<span style="word-break: break-all;">good</span>
+                                                <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                    <span>2019-03-30 19:27</span>
+                                                    <span><a>回复</a></span>
+                                                </div>
+                                                <div>
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane" id="profile">
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row hjx-margin-top">
+                                            <div class="col-xs-1 col-sm-3 col-md-1 col-lg-1 hjx-padding-lr">
+                                                <div>
+                                                    <img class="img-circle hjx-img" src="../../static/images/test.jpg"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-11 col-sm-9 col-md-11 col-lg-11">
+                                                <div class="hjx-margin-bottom hjx-text-middle">
+                                                    <span class="hjx-margin-right ">华瑾熙</span>
+                                                    <span class="hjx-margin-right">#2楼</span>
+                                                    <span class="hjx-margin-right right">2019-03-30</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom hjx-text-small">
+                                                    <span>留言：test</span>
+                                                </div>
+                                                <div class="hjx-margin-bottom">
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>1人点赞</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <i class="iconfont icon-wechat hjx-i"></i><a>2人回复</a>
+                                                </div>
+                                                <div class="hjx-padding-lr hjx-border-left hjx-text-small">
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    <span class="hjx-margin-right-small">回复</span>
+                                                    <span class="hjx-margin-right-small">lvy</span>
+                                                    ：<span style="word-break: break-all;">good</span>
+                                                    <div class="hjx-margin-top hjx-border-bottom hjx-margin-bottom hjx-padding-bottom">
+                                                        <span>2019-03-30 19:27</span>
+                                                        <span><a>回复</a></span>
+                                                    </div>
+                                                    <div>
+                                                        <i class="iconfont icon-wechat hjx-i"></i><a>添加新评论</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
+            <div class="panel panel-default hjx-fixed-right">
+                <div class="panel-heading">文章目录</div>
+                <div class="panel-body">
+                    1 Java的概念<br>
+                    2 面向对象与面向过程<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2.1 面向过程<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2.2 面向对象<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2.3 两者区别<br>
+                    3 Java特点<br>
+                    4 JDK、JRE、JVM的联系与区别<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/* 返回顶部 */-->
+    <div class="btn-group-vertical hjx-tools" role="group">
+        <button type="button" class="btn btn-default top"><i class="iconfont icon-wechat hjx-i"></i></button>
+        <button type="button" class="btn btn-default top"><i class="iconfont icon-wechat hjx-i"></i></button>
+    </div>
+</div>
+
+
+
+<script src="../../static/js/jquery.js"></script>
+<!--/* 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 */-->
+<script src="../../static/js/bootstrap.js"></script>
+<!--/*消息提示插件*/-->
+<script src="../../static/js/toastr.js"></script>
+<!--/*表单验证插件*/-->
+<script src="../../static/js/jquery.validate.js"></script>
+<script src="../../static/js/additional-methods.js"></script>
+<script src="../../static/js/bootstrap-datepicker.js"></script>
+<script src="../../static/js/register.js"></script>
+<script src="../../static/js/cropbox.js"></script>
+<script src="../../static/js/common.js"></script>
+<!--阿里云图标-->
+<script src="../../static/iconfont/iconfont.js"></script>
+<script src="../../static/js/blog.js"></script>
+</body>
+</html>

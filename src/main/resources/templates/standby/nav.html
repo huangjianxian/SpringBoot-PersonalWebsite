@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="keywords" content="博客,个人,学习,IT,生活,华瑾熙,Jonty Hua,程序,springboot,java,后端,全栈">
+    <meta name="description" content="Jonty Hua,1998,编程.专注于Spring,SpringBoot等后端技术探索,以及MySql数据库开发,SSH等后端流行框架学习">
+
+    <title>Jonty Hua | 华瑾熙</title>
+    <!--/* Bootstrap CSS */-->
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+
+    <!--/*index.css*/-->
+    <link href="../../static/css/index.css" rel="stylesheet">
+
+    <link href="../../static/css/common.css" rel="stylesheet">
+
+    <link href="../../static/css/bootstrap-datepicker.css" rel="stylesheet">
+
+    <link href="../../static/css/validation.css" rel="stylesheet">
+
+    <link href="../../static/css/register.css" rel="stylesheet">
+
+    <link href="../../static/css/toastr.css" rel="stylesheet">
+    <!--/*分类页面*/-->
+    <link href="../../static/css/categories.css" rel="stylesheet">
+    <!--阿里云图标-->
+    <link href="../../static/iconfont/iconfont.css" rel="stylesheet">
+    <!--引入页脚css-->
+    <link href="../../static/editormd/css/editormd.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default hjx-margin-bottom hjx-navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JontyHua | 华瑾熙</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+                <li><a href="/categories">分类</a></li>
+                <li><a href="/archives">归档</a></li>
+                <li><a href="/about">关于我</a></li>
+            </ul>
+            <div sec:authorize="isAnonymous()" class="pull-right">
+                <a href="/login" type="submit" style="text-decoration: none;">
+                    <button type="button" class="btn btn-primary navbar-btn">登陆</button>
+                </a>
+                <a href="/register" type="submit" style="text-decoration: none;">
+                    <button type="button" class="btn btn-default navbar-btn">注册</button>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()" class="pull-right row form-inline">
+                <div style="display:inline-block; float:left;">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a th:href="@{'/u/' + ${#authentication.name}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <span sec:authentication="name"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class=" dropdown-item" th:href="@{'/u/' + ${#authentication.name}}">个人主页</a></li>
+                                <li><a class=" dropdown-item" th:href="@{'/u/' + ${#authentication.name}} + '/profile'">个人设置</a></li>
+                                <li><a class=" dropdown-item" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')" target="_blank">后台管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display:inline-block; float:left;">
+                    <form action="/logout" th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-default navbar-btn">退出</button>
+                    </form>
+                </div>
+            </div>
+        </div><!--/* nav-collapse */-->
+    </div><!--/* container-fluid */-->
+</nav>
+
+
+
+
+
+<script src="../../static/js/jquery.js"></script>
+<!--/* 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 */-->
+<script src="../../static/js/bootstrap.js"></script>
+<!--/*消息提示插件*/-->
+<script src="../../static/js/toastr.js"></script>
+<!--/*表单验证插件*/-->
+<script src="../../static/js/jquery.validate.js"></script>
+<script src="../../static/js/additional-methods.js"></script>
+<script src="../../static/js/bootstrap-datepicker.js"></script>
+<script src="../../static/js/register.js"></script>
+<script src="../../static/js/cropbox.js"></script>
+<script src="../../static/editormd/editormd.js"></script>
+<!--阿里云图标-->
+<script src="../../static/iconfont/iconfont.js"></script>
+<!--首页js-->
+<script>
+    editormd("hjx-editormd", {
+        width: "100%",
+        height: 650,
+        syncScrolling: "single",
+        path: "static/editormd/lib/",
+        emoji: true,
+        saveHTMLToTextarea: true,
+        imageUpload : true,
+        tocm : true, // Using [TOCM]
+        tex : true, // 开启科学公式TeX语言支持，默认关闭
+        flowChart : true, // 开启流程图支持，默认关闭
+        imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL : "/uploadImage",
+        onload: function () {
+            //console.log('onload', this);
+            //this.fullscreen();
+            //this.unwatch();
+            //this.watch().fullscreen();
+            // this.width("100%");
+            // this.height(480);
+            //this.resize("100%", 640);
+        }
+    });
+</script>
+</body>
+</html>

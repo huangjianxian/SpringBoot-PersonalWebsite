@@ -1,0 +1,13 @@
+/*
+ * 验证样式，用于注册表单验证
+ */
+input.error { border: 1px solid red; }
+label.error {
+    font-weight: bold;
+    color: #EA5200;
+    margin-bottom: 0px;
+    float: right;
+}
+label.checked {
+
+}

@@ -1,0 +1,33 @@
+/**
+ * @Author: Jonty Hua
+ * @Date: 2019-04-11
+ * 博客页面
+ */
+
+.hjx-blog-container{
+    padding: 7px;
+}
+
+.hjx-blog-title{
+    margin-bottom: 20px;
+}
+
+.hjx-blog-info{
+    margin-bottom: 15px;
+}
+
+.hjx-blog-info span{
+    margin-right: 7px;
+}
+
+.hjx-blog-content{
+    margin-bottom: 15px;
+}
+
+.hjx-blog-copyright{
+    margin-bottom: 15px;
+}
+
+.hjx-blog-catalog{
+    margin-top: 20px;
+}

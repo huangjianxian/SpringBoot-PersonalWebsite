@@ -1,0 +1,69 @@
+
+<div class="input-group hjx-search">
+    <input type="text" class="form-control" id="searchName" placeholder="输入文章标题进行搜索">
+    <span class="input-group-btn">
+        <button class="btn btn-default" id="searchNameBtn" type="button">Search!</button>
+    </span>
+    <div class="input-group-btn">
+        <button class="btn btn-default" id="addBlogBtn">写博客</button>
+    </div>
+</div><!--/* /input-group */-->
+<div class="form-group">
+    <label class="col-form-label">分类：</label>
+    <!--/**/-->
+    <select id="catalogSP" class="selectpicker show-tick" title="请选择一项" data-live-search="true" data-size="5" >
+        <option th:each="catalog : ${blogModel.catalogList}" th:value="${catalog.name}"></option>
+    </select>
+</div>
+<div id="mainContainer" class="container-fluid">
+    <div id="mainContainerRepleace" class="row">
+        <div class="col-lg-12">
+            <h2 class="sub-header">All Blogs</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="info">
+                            <th>ID</th>
+                            <th>标题</th>
+                            <th>摘要</th>
+                            <th>分类</th>
+                            <th>标签</th>
+                            <th>阅读量</th>
+                            <th>点赞量</th>
+                            <th>评论量</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="blog : ${blogModel.blogList}">
+                            <td th:text="${blog.id}"></td>
+                            <td th:text="${blog.title}"></td>
+                            <td th:text="${blog.summary}"></td>
+                            <td th:text="${blog.catalog.name}"></td>
+                            <td th:text="${blog.title}"></td>
+                            <td th:text="${blog.readSize}"></td>
+                            <td th:text="${blog.voteSize}"></td>
+                            <td th:text="${blog.commentSize}"></td>
+                            <td>
+                                <div>
+                                    <a class="hjx-edit-blog" role="button" th:attr="blogId=${blog.id}">
+                                        编辑
+                                    </a>
+                                    <a class="hjx-delete-blog" role="button"
+                                       th:attr="blogId=${blog.id}">
+                                        删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div th:replace="~{fragments/page :: page}">...</div>
+    </div>
+</div>
+
+<!--<script type="text/javascript">-->
+    <!--$('.selectpicker').selectpicker();-->
+<!--</script>-->

@@ -1,0 +1,41 @@
+<h4>私信博主</h4>
+<input type="hidden" th:value="${userModel.username}" id="username">
+<textarea class="form-control hjx-textarea hjx-margin-bottom" id="content" name="content" rows="3" placeholder="亲爱的伙伴，说两句吧~"></textarea>
+<button class="btn btn-primary hjx-right" id="sendLetterBtn">发送私信</button>
+
+<script>
+    // 提交变更后，清空表单
+    $("#sendLetterBtn").click(function() {
+        // 获取 CSRF Token
+        var csrfToken = $("meta[name='_csrf_token']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        var username = $("#username").val()
+        $.ajax({
+            url: "/u/"+username+"/sendLetter",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify({
+                "content": $('#content').val(),
+            }),
+            beforeSend: function(request) {
+                request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
+            },
+            success: function(data){
+                if (data.success) {
+                    toastr.success(data.message);
+                    // 停顿1秒后刷新
+                    window.setTimeout(function () {
+                        window.location = data.body;
+                    },1000);
+                } else {
+                    toastr.error("error!"+data.message);
+                }
+
+            },
+            error : function() {
+                toastr.error("error!");
+            }
+        })
+    });
+
+</script>

@@ -1,0 +1,77 @@
+/*分类页面*/
+
+
+
+/*缩小页面*/
+.hjx-container{
+    padding: 30px 200px 30px 200px;
+}
+
+/*左边全部分类*/
+.hjx-title{
+    margin-bottom: 35px;
+}
+
+/*分类列表*/
+.hjx-ctg-li ul{
+    padding-left: 30px;
+}
+
+.hjx-ctg-li li{
+    list-style-type:none;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+
+
+/*分类 竖直排列*/
+.timeline-box{
+    width: 100%;
+    height: auto;
+}
+
+.hjx-tl{
+    border-left: 3px solid #eceff2;
+}
+
+.hjx-tl-row{
+    margin:20px 0;
+}
+
+.hjx-tl-node{
+    width: 12px;
+    color: #fff;
+    height: 12px;
+    border-radius: 50%;
+    margin: 12px 0 0 -8px;
+    display: inline-block;
+    background-color: #38b7ea;
+    float: left;
+}
+
+.hjx-tl-content{
+    margin:10px 0px 10px 30px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    font-size: 20px;
+    padding: 10px;
+}
+
+.hjx-tl-content:before{
+    position: absolute;
+    top: 10px;
+    left: -8px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    display: block;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    border-width: 8px 8px 8px 0;
+    pointer-events: none;
+}
+
+
+
+

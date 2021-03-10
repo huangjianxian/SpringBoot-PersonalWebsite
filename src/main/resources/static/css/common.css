@@ -1,0 +1,370 @@
+/*自定义通用样式*/
+body{
+    background: url("../images/bg.png");
+}
+
+/*nav 前台导航栏*/
+.hjx-navbar{
+    /*background-color: #20242D;*/
+    /*background-color: #1B8391;*/
+    background-color: white;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+
+}
+
+.hjx-navbar .navbar-nav li a{
+    /*color: white;*/
+}
+
+.hjx-navbar .navbar-brand{
+    /*color: white;*/
+}
+
+
+/*container*/
+.hjx-container-mini{
+    width: 60%;
+}
+
+/*font*/
+.hjx-text-big{
+    font-size: 23px;
+    margin:20px 0px;
+}
+
+.hjx-text-middle{
+    font-size: 17px;
+}
+
+.hjx-text-small{
+    font-size: 15px;
+}
+
+/*img*/
+
+/*padding*/
+.hjx-padding{
+    padding: 10px;
+}
+
+.hjx-padding-bottom{
+    padding-bottom: 8px;
+}
+
+
+.hjx-padding-lr-mini{
+    padding: 0px 10px;
+}
+
+/*上下*/
+.hjx-padding-tb-small{
+    padding: 10px 0px;
+}
+
+/*fix*/
+/*固定在右边，用在文章详情页面的目录*/
+.hjx-fixed-right{
+    position: fixed;
+    z-index: 1030;
+}
+
+/*common*/
+.hjx-right{
+    float: right;
+}
+
+.hjx-left{
+    float: left;
+}
+
+/*background*/
+.hjx-bg-default{
+    background-color: #f2f2f2;
+    border-radius: 3px;
+}
+
+.hjx-bg-white{
+    background-color: white;
+}
+
+.hjx-margin-top{
+    margin-top: 10px;
+}
+
+.hjx-margin-top-max{
+    margin-top: 20px;
+}
+
+
+.hjx-margin-bottom{
+    margin-bottom: 10px;
+}
+
+.hjx-margin-left{
+    margin-left: 10px;
+}
+
+.hjx-margin-right{
+    margin-right: 10px;
+}
+
+.hjx-margin-right-small{
+    margin-right: 5px;
+}
+
+.hjx-border{
+    border:1px solid #afafaf;
+    border-radius: 5px;
+}
+
+.hjx-border-left{
+    border-left: 3px solid #afafaf;
+}
+
+.hjx-border-left-danger{
+    border-left: 3px solid red;
+}
+
+.hjx-border-bottom{
+    border-bottom: 1px solid #afafaf;
+}
+
+.hjx-border-bottom-primary{
+    border-bottom: 1px solid #171717;
+}
+
+.hjx-ol{
+    padding-left: 18px;
+    margin-bottom: 0px;
+}
+
+.hjx-ol li{
+    margin-bottom: 1px;
+}
+
+.hjx-i{
+    margin-right: 7px;
+}
+
+.hjx-i-small{
+    margin-right: 4px;
+}
+
+/*返回顶部*/
+.hjx-tools{
+    position: fixed !important;
+    z-index: 10 !important;
+    right: 10px !important;
+    bottom: 10px; !important;
+}
+
+/*panel*/
+.hjx-panel{
+
+}
+
+.hjx-panel .panel-heading{
+    background-color: #FF5240;
+    color: white;
+}
+
+.hjx-panel .panel-heading{
+    background-color: #FF5240;
+}
+
+
+.hjx-title-small{
+    font-size: 18px;
+}
+
+
+
+.hjx-panel-border{
+    border-bottom: 1px solid #337ab7;
+    padding-bottom: 15px;
+}
+
+
+.hjx-textarea{
+    width:100%;
+    height:80px;
+    margin: 20px 0px;
+    resize:none;
+}
+
+/*标签 如原创、翻译等*/
+.hjx-flag{
+    background-color: #337ab7;
+    font-size: 15px;
+}
+
+/*用于标签*/
+.hjx-tag-primary{
+    font-size: 23px;
+    font-weight: inherit;
+}
+
+.hjx-tag-default{
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.hjx-tag-warning{
+    font-size: 26px;
+    font-weight: lighter;
+}
+
+.hjx-tag-success{
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.hjx-tag-info{
+    font-size: 24px;
+    font-weight: inherit;
+}
+
+.hjx-tag-danger{
+    font-size: 21px;
+    font-weight: lighter;
+}
+
+
+/*自定义媒体查询*/
+/*超大PC屏幕下的专用样式*/
+@media screen and (min-width:1200px) {
+    /*各页面使用，防止导航栏遮挡*/
+    .hjx-container{
+        padding-top: 30px;
+    }
+
+    /*注册页面 注册按钮*/
+    .hjx-register-btn-group{
+        margin-bottom: 20px;
+    }
+
+    .hjx-register-btn{
+        border-radius: 3px;
+    }
+
+
+    /*防止导航栏遮挡*/
+    .hjx-bottom-container{
+        padding-top: 50px;
+    }
+
+    /*菜单栏*/
+    .hjx-menu{
+        margin-bottom: 5px;
+    }
+
+    /*左右*/
+    .hjx-padding-lr{
+        padding: 0px 25px;
+    }
+
+    .hjx-img{
+        width: 55px;
+        height: 55px;
+    }
+}
+/*中等PC屏幕下的专用样式*/
+@media screen and (min-width:992px) and (max-width: 1199px) {
+    /*防止导航栏遮挡*/
+    .hjx-bottom-container{
+        padding-top: 50px;
+    }
+
+    .hjx-container{
+        margin-top: 50px;
+    }
+
+    /*左右*/
+    .hjx-padding-lr{
+        padding: 0px 25px;
+    }
+
+    .hjx-img{
+        width: 55px;
+        height: 55px;
+    }
+
+}
+/*PAD屏幕下的专用样式*/
+@media screen and (min-width: 768px) and (max-width:991px ){
+    /*防止导航栏遮挡*/
+    .hjx-bottom-container{
+        padding-top: 50px;
+    }
+    .hjx-index-nav-btn{
+        width: 300px;
+    }
+
+    .hjx-padding-lr{
+        padding: 0px 10px;
+    }
+
+    .hjx-padding-mini{
+        padding: 0px;
+    }
+
+    .hjx-img{
+        width: 55px;
+        height: 55px;
+    }
+}
+/*PHONE屏幕下的专用样式*/
+@media screen and (max-width:767px) {
+    /*防止导航栏遮挡*/
+    .hjx-bottom-container{
+        padding-top: 40px;
+    }
+    .hjx-index-nav-btn{
+        width: 48%;
+    }
+
+    /*左右*/
+    .hjx-padding-lr{
+        padding: 0px 8px;
+    }
+
+    .hjx-padding-mini{
+        padding: 0px;
+    }
+
+    /*小屏幕的时候全撑开*/
+    .hjx-container-xs{
+        width: 100%;
+    }
+
+    .hjx-img{
+        width: 38px;
+        height: 38px;
+    }
+}
+
+.hjx-table{
+    table-layout:fixed;
+    width: 100%;
+}
+
+.hjx-table td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/*引入阿里云图标*/
+.icon {
+    width: 2em; height: 2em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.hjx-icon-mini{
+    width: 1.5em; height: 1.5em;
+}

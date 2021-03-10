@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+    <body>
+    <div class="container hjx-container hjx-container-mini">
+        <form id="registerForm" th:action="@{/register}" method="post">
+            <h3 class="text-center">注册新账号</h3>
+            <div class="row">
+                <div class="form-group hjx-register-form-group">
+                    <label for="email" class="col-form-label">邮箱</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="请输入您的邮箱" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="username" class="col-form-label">用户名</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名，仅支持字母和数字，10个字符以内且以后不可修改">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="nickname" class="col-form-label">昵称</label>
+                    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="请输入昵称，10个字符以内">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="password" class="col-form-label">密码</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="confirmpassword" class="col-form-label">确认密码</label>
+                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="请重新输入密码">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="birth" class="col-form-label">出生年份</label>
+                    <input type="text" class="form-control form-filter yearpicker" id="birth" readonly name="birth" placeholder="请选择您的出生年份" value="1998">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label class="col-form-label">性别</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="gender" id="boy"
+                                   value="boy" checked>男
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" id="girl"
+                                   value="girl">女
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px;">
+                <button type="submit" class="btn btn-primary" style="float: right;">立即注册</button>
+            </div>
+        </form>
+    </div> <!--/* /container */-->
+	<div th:replace="~{fragments/footer :: footer}">...</div>
+	<!--/* JavaScript */-->
+	<script src="../static/js/register.js" th:src="@{/js/register.js}" />
+    </body>
+</html>

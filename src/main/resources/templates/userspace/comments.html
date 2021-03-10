@@ -1,0 +1,73 @@
+<h4>评论</h4>
+<table class="table table-striped table-hover">
+    <th:block th:each="comment : ${userModel.comments}">
+    <tr class="info">
+        <th>文章标题</th>
+        <th>评论内容</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="'/blog/' + ${comment.blog.id}" target="_blank" th:text="${comment.blog.title}"></a>
+        </td>
+        <td>
+            <span th:text="${comment.content}"></span>
+
+        </td>
+        <td>
+            <a th:attr="commentId=${comment.id}" role="button" class="delete-comment">删除评论</a>
+        </td>
+    </tr>
+    <tr th:if="${#arrays.length(comment.replyComments)} > 0">
+        <th>回复用户</th>
+        <th>回复内容</th>
+        <th>回复时间</th>
+    </tr>
+        <th:block th:each="replyComment : ${comment.replyComments}">
+        <tr>
+            <td>
+                <span th:text="${replyComment.user.nickname}"></span>
+            </td>
+            <td>
+                <span th:text="${replyComment.content}"></span>
+            </td>
+            <td>
+                <span th:text="${#dates.format(replyComment.createTime,'YYYY-MM-dd HH:mm')}"></span>
+            </td>
+        </tr>
+        </th:block>
+    </th:block>
+</table>
+
+
+<script type="text/javascript">
+    $(function () {
+        $(".delete-comment").click(function () {
+            console.log("点击删除点赞")
+            console.log("点击删除点赞+id="+$(this).attr("commentId"))
+            var csrfToken = $("meta[name='_csrf_token']").attr("content");
+            var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+            $.ajax({
+                url: '/comments/'+$(this).attr('commentId'),
+                type: 'DELETE',
+                beforeSend: function(request) {
+                    request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
+                },
+                success: function(data){
+                    if (data.success) {
+                        toastr.success(data.message);
+                        // 停顿1秒后刷新
+                        window.setTimeout(function () {
+                            window.location.reload();
+                        },1000);
+                    } else {
+                        toastr.error(data.message);
+                    }
+                },
+                error : function() {
+                    toastr.error("error!");
+                }
+            });
+        })
+    })
+</script>

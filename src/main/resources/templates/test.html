@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8"/>
+    <title>Simple example - Editor.md examples</title>
+    <!--/*<link rel="stylesheet" href="../static/css/style.css" />*/-->
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="../static/editormd/css/editormd.css"/>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<div class="container-fluid" style="padding: 0px;">
+    <img src="https://hjx-web.oss-cn-shenzhen.aliyuncs.com/test/2019-05-15/23a8c1f4948943e980fd27918c736133-blob">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="请输入文章标题">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"
+                            data-toggle="modal"
+                            data-target="#saveBlogModal">
+                        发表文章
+                    </button>
+                </span>
+            </div><!--/* /input-group */-->
+        </div>
+        <div class="col-lg-12">
+            <div id="test-editormd">
+        <textarea style="display:none;">[TOC]
+
+#### Disabled options
+
+- TeX (Based on KaTeX);
+- Emoji;
+- Task lists;
+- HTML tags decode;
+- Flowchart and Sequence Diagram;
+
+#### Editor.md directory
+
+    editor.md/
+            lib/
+            css/
+            scss/
+            tests/
+            fonts/
+            images/
+            plugins/
+            examples/
+            languages/
+            editormd.js
+            ...
+
+```html
+&lt;!-- English --&gt;
+&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
+
+&lt;!-- 繁體中文 --&gt;
+&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
+```
+</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--/* Modal */-->
+<div class="modal fade" id="saveBlogModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">发表文章</h4>
+            </div>
+            <div class="modal-body" id="">
+                <!--/*用户信息内容区域*/-->
+
+
+                <form th:action="@{/users}" method="post" th:object="${userModel.user}" id="userForm">
+                    <input type="hidden" name="id" th:value="*{id}">
+                    <div class="form-group">
+                        <label for="" class="col-form-label">分类：</label>
+                        <select class="selectpicker show-tick" title="请选择一项" data-live-search="true" data-size="5">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                            <option>B</option>
+                            <option>C</option>
+                        </select>
+                        <label for="" class="col-form-label">标签：</label>
+                        <select class="selectpicker" title="请选择一项" data-live-search="true" data-size="5" multiple>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                            <option>D</option>
+                            <option>E</option>
+                            <option>B</option>
+                            <option>C</option>
+                        </select>
+                    </div>
+                    <label for="" class="col-form-label">摘要：</label>
+                    <textarea class="form-control" rows="5" style="width: 100%"></textarea>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="a">确认发表</button>
+                <button type="button" class="btn btn-default" id="b">保存草稿</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/*modal end*/-->
+
+
+
+
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="../static/js/bootstrap-select.js"></script>
+<script src="../static/editormd/editormd.js"></script>
+<script type="text/javascript">
+    var testEditor;
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "../static/editormd/lib/",
+            emoji: true,
+            saveHTMLToTextarea: true
+        });
+    });
+</script>
+</body>
+</html>

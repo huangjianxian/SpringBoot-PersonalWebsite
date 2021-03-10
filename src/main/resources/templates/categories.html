@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+<div class="container hjx-ctg-container">
+    <div class="row" style="margin:0px;">
+        <div class="col-lg-12" style="padding: 0px;">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="active">分类<span style="float: right">共<strong style="color: #18bc9c;" th:text="${#arrays.length(categories)}"></strong>个</span></div>
+                </div>
+                <div class="panel-body">
+                    <div class="row hjx-panel-border">
+                        <div class="col-lg-12">
+                            <th:block th:each="ctg : ${categoryModel.categories}">
+                                <a href="#" class="btn btn-default hjx-list-blog" th:text="${ctg.name}" th:attr="ctgName=${ctg.name}">Primary</a>
+                            </th:block>
+                        </div>
+                    </div>
+                    <div id="mainContainer">
+                        <div id="mainContainerRepleace">
+                            <th:block th:each="blog : ${categoryModel.blogList}">
+                                <div class="hjx-index-content hjx-border hjx-margin-top">
+                                    <div class="hjx-title">
+                                        <a th:href="'/blog/' + ${blog.id}" th:title="${blog.title}" th:text="${blog.title}">文章标题</a>
+                                    </div>
+                                    <div class="hjx-info">
+                                        <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                            <use xlink:href="#icon-flagpx"></use>
+                                        </svg>
+                                        <span th:text="${blog.flag.name}">原创</span>
+                                        <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                            <use xlink:href="#icon-time"></use>
+                                        </svg>
+                                        <a href="#" th:text="${#dates.format(blog.createTime,'YYYY-MM-dd')}">2019-03-29</a>
+                                        <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                            <use xlink:href="#icon-author"></use>
+                                        </svg>
+                                        <span th:text="${blog.user.username}">jontyhua</span>
+                                        <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                            <use xlink:href="#icon-fenlei1"></use>
+                                        </svg>
+                                        <a href="#" th:text="${blog.category.name}">面试</a>
+                                    </div>
+                                    <div class="hjx-brief">
+                                        <p th:utext="${blog.summary}"></p>
+                                        <br>
+                                        <a th:href="'/blog/' + ${blog.id}">阅读原文 >></a>
+                                    </div>
+                                    <div class="hjx-tag">
+                                        <th:block th:each="tag : ${blog.tags}">
+                                            <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                                <use xlink:href="#icon-tag"></use>
+                                            </svg>
+                                            <a th:href="'/?keyword='+ ${tag.name}" th:text="${tag.name}"></a>
+                                        </th:block>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <div th:replace="~{fragments/page :: page}">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/footer :: footer}">...</div>
+<!--category js-->
+<script src="../static/js/category.js" th:src="@{/js/category.js}" type="text/javascript"></script>
+</body>
+</html>

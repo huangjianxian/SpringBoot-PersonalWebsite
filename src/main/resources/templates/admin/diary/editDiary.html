@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<div style="margin-top: -20px;" th:object="${diaryModel.diary}">
+    <div class="input-group">
+        <input type="hidden" name="id" th:value="*{id}" id="diaryId">
+        <input type="text" id="title" name="title" th:value="*{title}" class="form-control" placeholder="请输入标题...">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary" id="updateDiary">确认发表</button>
+        </span>
+    </div><!--/* /input-group */-->
+    <div id="hjx-editormd">
+        <textarea style="display:none;" id="content" name="content"  th:text="*{content}"></textarea>
+    </div>
+</div>
+
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/diary.js" th:src="@{/js/admin/diary.js}"></script>
+</body>
+</html>

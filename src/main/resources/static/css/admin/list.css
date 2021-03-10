@@ -1,0 +1,21 @@
+/*用户列表页面*/
+
+/*大屏幕下的专用样式*/
+@media screen and (min-width:1200px) {
+    .hjx-search{
+        width:40%;
+        margin-left: 10px;
+    }
+}
+/*中等PC屏幕下的专用样式*/
+@media screen and (min-width:992px) and (max-width: 1199px) {
+
+}
+/*PAD屏幕下的专用样式*/
+@media screen and (min-width: 768px) and (max-width:991px ){
+
+}
+/*PHONE屏幕下的专用样式*/
+@media screen and (max-width:767px) {
+
+}

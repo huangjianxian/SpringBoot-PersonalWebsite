@@ -1,0 +1,134 @@
+/**
+ * 首页样式
+ */
+
+/*首页 公告部分，缩短高度*/
+.hjx-broadcast{
+    width: 100%;
+    height:23px;
+    line-height:23px;
+    overflow: hidden;
+    display: block;
+}
+
+.hjx-author{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius:5px;
+}
+
+.hjx-author img{
+    width: 100%;
+    height: 100%;
+}
+
+.hjx-name{
+    font-size: large;
+    font-weight: bold;
+}
+
+.hjx-ol{
+    padding-left: 18px;
+    margin-bottom: 0px;
+}
+
+.hjx-ol li{
+    margin-bottom: 1px;
+}
+
+/*首页文章主体*/
+.hjx-index-content{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 13px;
+    padding: 18px;
+}
+
+.hjx-index-content .hjx-title{
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.hjx-index-content .hjx-info{
+    margin-bottom: 7px;
+}
+
+.hjx-index-content .hjx-info span{
+    margin-right: 7px;
+}
+
+.hjx-index-content .hjx-info a{
+    margin-right: 7px;
+}
+
+.hjx-index-content .hjx-brief{
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.7;
+    border-bottom: 1px solid lightgray;
+    word-break:break-all;
+}
+
+.hjx-index-content .hjx-brief-small{
+    font-size: 16px;
+    line-height: 1.7;
+    word-break:break-all;
+}
+
+.hjx-index-content .hjx-brief p img{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.hjx-index-content .hjx-brief a{
+    font-size: 20px;
+    display: inline-block;
+}
+
+.hjx-index-content .hjx-tag{
+    font-size: 17px;
+}
+
+.hjx-index-content .hjx-tag a{
+    margin-right: 5px;
+}
+
+.hjx-index-content .hjx-tag-small{
+    font-size: 14px;
+}
+
+/*用于标签*/
+.hjx-tag-primary{
+    font-size: 23px;
+    font-weight: inherit;
+}
+
+.hjx-tag-default{
+    font-size: 19px;
+    font-weight: normal;
+}
+
+.hjx-tag-warning{
+    font-size: 26px;
+    font-weight: lighter;
+}
+
+.hjx-tag-success{
+    font-size: 17px;
+    font-weight: bolder;
+}
+
+.hjx-tag-info{
+    font-size: 24px;
+    font-weight: inherit;
+}
+
+.hjx-tag-danger{
+    font-size: 21px;
+    font-weight: lighter;
+}
+
+

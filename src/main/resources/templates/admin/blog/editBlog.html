@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<div style="margin-top: -20px;" th:object="${blogModel.blog}">
+    <div class="input-group">
+        <input type="hidden" name="id" th:value="*{id}" id="blogId">
+        <input type="text" id="title" name="title" th:value="*{title}" class="form-control" placeholder="请输入标题...">
+        <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button"
+                            data-toggle="modal"
+                            data-target="#updateModel">
+                        发表文章
+                    </button>
+                </span>
+    </div><!--/* /input-group */-->
+    <div id="hjx-editormd">
+        <textarea style="display:none;" id="content" name="content"  th:text="*{content}"></textarea>
+    </div>
+
+    <!--/* Modal */-->
+    <div class="modal fade" id="updateModel" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">发表文章</h4>
+                </div>
+                <div class="modal-body" id="">
+                    <!--/*用户信息内容区域*/-->
+                    <div class="form-group">
+                        <label class="col-form-label">类型：</label>
+                        <select id="flagSelected" class="selectpicker show-tick" title="请选择一项" data-size="5" >
+                            <th:block th:each="flag : ${blogModel.flagList}">
+                                <option th:selected="${blogModel.blog.flag.id eq flag.id}" th:text="${flag.name}" th:value="${flag.id}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">分类：</label>
+                        <select id="ctgSelected" class="selectpicker show-tick" title="请选择一项" data-live-search="true" data-size="5" data-style="btn-info">
+                            <th:block th:each="ctg : ${blogModel.categoryList}">
+                                <option th:selected="${blogModel.blog.category.id eq ctg.id}" th:text="${ctg.name}" th:value="${ctg.id}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" th:value="${blogModel.tagsStr}" id="tagsStr"/>
+                        <label class="col-form-label">标签：</label>
+                        <select id="tagSelected" class="selectpicker show-tick" title="请选择一项" multiple data-live-search="true" data-size="5">
+                            <th:block th:each="tag : ${blogModel.tagList}">
+                                <option th:text="${tag.name}" th:value="${tag.id}"></option>
+                            </th:block>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="switch">
+                            <label class="col-form-label">版权申明：</label>
+                            <input type="hidden" th:value="${blogModel.blog.copyrightState}" id="copyrightStateVal"/>
+                            <input name="copyrightState" id="copyrightState" th:value="${blogModel.blog.copyrightState}" type="checkbox"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="switch">
+                            <label class="col-form-label">开启评论：</label>
+                            <input type="hidden" th:value="${blogModel.blog.commentState}" id="commentStateVal"/>
+                            <input name="commentState" id="commentState" type="checkbox"/>
+                        </div>
+                    </div>
+                    <label for="summary" class="col-form-label" >摘要：</label>
+                    <textarea id="summary" th:text="*{summary}" class="form-control" rows="5" style="width: 100%" name="summary"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="saveAsDraft">保存草稿</button>
+                    <button type="button" class="btn btn-primary" id="submitEdit">确认发表</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/*modal end*/-->
+</div>
+
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/editBlog.js" th:src="@{/js/admin/editBlog.js}"></script>
+</body>
+</html>

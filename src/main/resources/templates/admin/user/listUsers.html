@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<!--/* /*用户列表*/*/-->
+<div class="input-group hjx-search">
+    <input type="text" class="form-control" id="searchName" placeholder="输入用户用户名进行搜索">
+    <span class="input-group-btn">
+        <button class="btn btn-default" id="searchNameBtn" type="button">Search!</button>
+    </span>
+</div><!--/* /input-group */-->
+
+<div id="mainContainer" class="container-fluid">
+    <div id="mainContainerRepleace" class="row">
+        <div class="col-lg-12">
+            <h2 class="sub-header">All Users</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover hjx-table">
+                    <thead>
+                    <tr class="info">
+                        <th width="5%">ID</th>
+                        <th width="10%">用户名</th>
+                        <th width="10%">昵称</th>
+                        <th width="25%">邮箱</th>
+                        <th width="10%">性别</th>
+                        <th width="10%">出生年份</th>
+                        <th width="10%">角色</th>
+                        <th width="10%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user : ${userModel.userList}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.username}"></td>
+                        <td th:text="${user.nickname}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:if="${user.gender} == 'boy'">
+                            <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                <use xlink:href="#icon-nan"></use>
+                            </svg>
+                        </td>
+                        <td th:if="${user.gender} == 'girl'">
+                            <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                <use xlink:href="#icon-nv"></use>
+                            </svg>
+                        </td>
+                        <td th:text="${user.birth}"></td>
+                        <td th:text="${user.authorities}"></td>
+                        <td th:if="${user.state} == 1">
+                            <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                <use xlink:href="#icon-jihuo"></use>
+                            </svg>
+                        </td>
+                        <td th:if="${user.state} == 0">
+                            <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                <use xlink:href="#icon-wodeweijihuo"></use>
+                            </svg>
+                        </td>
+                        <td>
+                            <div>
+                                <a class="hjx-edit-user" role="button"
+                                   th:href="@{/admin/users/edit/{id}(id=${user.id})}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-bianji"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-delete-user" role="button"
+                                   th:attr="userId=${user.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-shanchu"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div th:replace="~{fragments/page :: page}">...</div>
+    </div>
+</div>
+
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/user.js" th:src="@{/js/admin/user.js}"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      th:fragment="header">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--/* CSRF */-->
+    <meta name="_csrf_token" th:content="${_csrf.token}"/>
+    <!--/* default header name is X-CSRF-TOKEN */-->
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta name="keywords" content="博客,个人,学习,IT,生活,华瑾熙,Jonty Hua,程序,springboot,java,后端,全栈">
+    <meta name="description" content="Jonty Hua,1998,编程.专注于Spring,SpringBoot等后端技术探索,以及MySql数据库开发,SSH等后端流行框架学习">
+
+    <title>Jonty Hua | 华瑾熙</title>
+    <!--/* Bootstrap CSS */-->
+    <link href="../../static/css/bootswatch.css" th:href="@{/css/bootswatch.css}" rel="stylesheet">
+
+    <link href="../../static/css/frontCommon.css" th:href="@{/css/frontCommon.css}" rel="stylesheet">
+
+    <!--/*index.css*/-->
+    <link href="../../static/css/index3.css" th:href="@{/css/index3.css}" rel="stylesheet">
+
+    <link href="../../static/css/about.css" th:href="@{/css/about.css}" rel="stylesheet">
+
+    <link th:href="@{/css/bootstrap-datepicker.css}" rel="stylesheet">
+
+    <link th:href="@{/css/validation.css}" rel="stylesheet">
+
+    <link th:href="@{/css/register.css}" rel="stylesheet">
+
+    <link th:href="@{/css/toastr.css}" rel="stylesheet">
+    <!--/*分类页面*/-->
+    <link th:href="@{/css/categories.css}" rel="stylesheet">
+    <!--日记-->
+    <link th:href="@{/css/diary.css}" rel="stylesheet">
+    <!--阿里云图标-->
+    <link th:href="@{/iconfont/iconfont.css}" rel="stylesheet">
+    <!--引入页脚css-->
+    <link th:href="@{/css/footer.css}" rel="stylesheet">
+    <!--引入页脚css-->
+    <link href="../../static/css/cropbox.css" th:href="@{/css/cropbox.css}" rel="stylesheet">
+    <!--公共基础类-->
+    <link href="../../static/css/base.css" th:href="@{/css/base.css}" rel="stylesheet">
+
+    <!--/*logo*/-->
+    <link rel="shortcut icon" th:href="@{favicon.ico}" type="image/x-icon">
+</head>
+<body>
+<!--导航栏-->
+<nav class="navbar navbar-default hjx-navbar hjx-margin0">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Jonty Hua</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+                <li><a href="/categories">分类</a></li>
+                <li><a href="/archives">归档</a></li>
+                <li><a href="/about">关于我</a></li>
+            </ul>
+            <div class="form-group visible-xs hjx-margin0" style="margin:0px;">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="phoneKeyword" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default hjx-search-btn" type="button">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div sec:authorize="isAnonymous()" class="pull-right">
+                <a href="/login">
+                    <button type="button" class="btn btn-success navbar-btn btn-sm">登录</button>
+                </a>
+                <a href="/register">
+                    <button type="button" class="btn btn-default navbar-btn btn-sm">注册</button>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a th:href="@{'/u/' + ${#authentication.name}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">欢迎您！<span sec:authentication="name"></span><span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a th:href="@{'/u/' + ${#authentication.name}}">个人主页</a></li>
+                            <li><a th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')" target="_blank">后台管理</a></li>
+                            <li class="divider"></li>
+                            <form th:action="@{/logout}" method="post">
+                                <button class="btn btn-default btn-sm" type="submit" style="width: 100%;text-align: left">退出登录</button>
+                            </form>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!--nav end-->
+</body>
+</html>

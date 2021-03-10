@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<div class="container hjx-container-mini">
+    <th:block th:object="${categoryModel.Category}">
+        <input type="hidden" name="id" th:value="*{id}" id="ctgId">
+        <div class="form-group">
+            <label class="col-form-label">修改分类名</label>
+            <input type="text" class="form-control" name="name" th:value="*{name}" maxlength="20" id="ctgName">
+        </div>
+        <button type="button" class="btn btn-primary hjx-right" id="editCtgBtn">提交</button>
+    </th:block>
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/catetory.js" th:src="@{/js/admin/catetory.js}"></script>
+</body>
+</html>

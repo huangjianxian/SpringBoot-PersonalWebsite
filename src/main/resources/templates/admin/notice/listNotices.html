@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<button type="button" class="btn btn-primary hjx-margin-left" data-toggle="modal" data-target="#addBtn">新增公告</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="sub-header">All Notices</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover hjx-table">
+                    <thead>
+                    <tr class="info">
+                        <th width="5%">ID</th>
+                        <th width="65%">内容</th>
+                        <th width="10%">创建时间</th>
+                        <th width="5%">状态</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="notice : ${noticesList}">
+                        <td th:text="${notice.id}"></td>
+                        <td th:text="${notice.content}"></td>
+                        <td th:text="${#dates.format(notice.createTime,'YYYY-MM-dd')}"></td>
+                        <td th:text="(${notice.state == 1})?'已发布':'已下线'"></td>
+                        <td>
+                            <div>
+                                <a class="hjx-online-notice" th:if="${notice.state eq 0}"  role="button" th:attr="noticeId=${notice.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-shangxian"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-offline-notice" th:if="${notice.state eq 1}" role="button" th:attr="noticeId=${notice.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-xiaxianx"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-delete-notice" role="button" th:attr="noticeId=${notice.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-shanchu"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--/* Modal */-->
+    <form th:action="@{/admin/notices}" method="post" id="addForm">
+    <div class="modal fade" id="addBtn" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">新增公告</h4>
+                </div>
+                <div class="modal-body">
+                    <label for="noticeContent" class="col-form-label" >公告内容：</label>
+                    <input type="text" class="form-control" id="noticeContent" maxlength="50" name="content" placeholder="请输入公告内容...">
+                </div>
+                <div class="bootstrap-switch" data-on="info" data-off="success" data-on-label="发布" data-off-label="下线">
+                    <input type="checkbox" checked />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="submitBtn" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!--/*modal end*/-->
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/notice.js" th:src="@{/js/admin/notice.js}"></script>
+</body>
+</html>

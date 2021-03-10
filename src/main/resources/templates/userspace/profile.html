@@ -1,0 +1,101 @@
+<h4>个人信息设置</h4>
+<th:block th:object="${userModel.user}">
+    <input type="hidden" name="id" th:value="*{id}" id="userId">
+    <div class="form-group">
+        <label for="username">用户名：</label>
+        <input type="text" class="form-control" id="username" name="username" th:value="*{username}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="email">邮箱：</label>
+        <input type="email" class="form-control" id="email" name="email" th:value="*{email}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="nickname">昵称：</label>
+        <input type="text" class="form-control" id="nickname" name="nickname" th:value="*{nickname}">
+    </div>
+
+    <div class="form-group">
+        <label for="birth" class="col-form-label">出生年份</label>
+        <input type="text" class="form-control form-filter yearpicker" id="birth" readonly name="birth" placeholder="请选择您的出生年份" th:value="*{birth}">
+    </div>
+    <div class="form-group">
+        <label for="password">密码：</label>
+        <input type="password" class="form-control" id="password" name="password" th:value="*{password}">
+    </div>
+        <div class="form-group">
+            <label for="confirmpassword">确认密码：</label>
+            <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" th:value="*{password}">
+        </div>
+    <div class="form-group">
+        <label class="col-form-label">性别</label>
+        <div class="radio">
+            <label>
+                <input type="radio" name="gender" id="boy"
+                       value="boy" checked>男
+            </label>
+            <label>
+                <input type="radio" name="gender" id="girl"
+                       value="girl">女
+            </label>
+        </div>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-primary" id="saveProfileBtn">提交修改</button>
+    </div>
+</th:block>
+<script>
+    // 出生年份认证
+    $('.yearpicker').datepicker({
+        startView: 'decade',
+        minView: 'decade',
+        format: 'yyyy',
+        maxViewMode: 2,
+        minViewMode:2,
+        autoclose: true,
+        endDate : new Date()
+    });
+
+    // 提交变更后，清空表单
+    $("#saveProfileBtn").click(function() {
+        console.log("点击了提交按钮")
+        // 获取 CSRF Token
+        var csrfToken = $("meta[name='_csrf_token']").attr("content");
+        var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+        var username = $("#username").val()
+        console.log(username)
+        console.log($('#userId').val())
+        $.ajax({
+            url: "/u/"+username+"/profile",
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            data:JSON.stringify({
+                "id":$('#userId').val(),
+                "username": $('#username').val(),
+                "nickname": $('#nickname').val() ,
+                "email": $('#email').val(),
+                "birth": $('#birth').val(),
+                "password": $('#password').val(),
+                "gender": $("input[type='radio']:checked").val(),
+            }),
+            beforeSend: function(request) {
+                request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
+            },
+            success: function(data){
+                if (data.success) {
+                    toastr.success(data.message);
+                    // 停顿1秒后刷新
+                    window.setTimeout(function () {
+                        window.location = data.body;
+                    },1000);
+                } else {
+                    toastr.error("error!"+data.message);
+                }
+
+            },
+            error : function() {
+                toastr.error("error!");
+            }
+        })
+    });
+
+</script>

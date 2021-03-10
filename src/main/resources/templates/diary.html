@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: header}">
+</head>
+<body>
+
+
+
+<!--<div class="container hjx-container-mini">-->
+    <!--<h3 class="hjx-margin-bottom">碎碎念</h3>-->
+    <!--<div class="row hjx-border-left">-->
+        <!--<div class="col-lg-12">-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-12">-->
+                    <!--&lt;!&ndash;日记内容&ndash;&gt;-->
+                    <!--<div class="hjx-margin-bottom" th:each="diary : ${diaryList}">-->
+                        <!--<h4 class="hjx-margin-bottom">Create at <span th:text="${#dates.format(diary.createTime,'YYYY-MM-dd')}">2019-04-30</span></h4>-->
+                        <!--<div class="hjx-index-content hjx-border hjx-bg-white">-->
+                            <!--<div class="hjx-title">-->
+                                <!--<span th:text="${diary.title}"></span>-->
+                            <!--</div>-->
+                            <!--<div class="hjx-diary-content">-->
+                                <!--<span th:utext="${diary.htmlContent}"></span>-->
+                                <!--<br>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="container hjx-responsive-container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="breadcrumb">
+                <li class="active">碎碎念</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <blockquote>
+                <!--日记内容-->
+                <div class="hjx-margin-bottom" th:each="diary : ${diaryList}">
+                    <h4>Create at <span class="hjx-margin-right" th:text="${#dates.format(diary.createTime,'YYYY-MM-dd HH:mm')}">2019-04-30 19:30</span></h4>
+                    <div class="hjx-index-content hjx-border">
+                        <div class="hjx-title">
+                            <span th:text="${diary.title}">日记标题</span>
+                        </div>
+                        <div class="hjx-diary-content">
+                            <p th:utext="${diary.htmlContent}">日记内容</p>
+                        </div>
+                    </div>
+                </div>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/footer :: footer}">...</div>
+</body>
+</html>

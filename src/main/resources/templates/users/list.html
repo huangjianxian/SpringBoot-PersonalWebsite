@@ -1,0 +1,80 @@
+<!--/* /*用户列表*/*/-->
+
+<div class="input-group hjx-search">
+    <input type="text" class="form-control" id="searchName" placeholder="输入用户用户名进行搜索">
+    <span class="input-group-btn">
+        <button class="btn btn-default" id="searchNameBtn" type="button">Search!</button>
+    </span>
+</div><!--/* /input-group */-->
+
+<div id="mainContainer" class="container-fluid">
+    <div id="mainContainerRepleace" class="row">
+        <div class="col-lg-12">
+            <h2 class="sub-header">All Users</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr class="info">
+                            <th>ID</th>
+                            <th>用户名</th>
+                            <th>昵称</th>
+                            <th>邮箱</th>
+                            <th>性别</th>
+                            <th>出生年份</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${userModel.userList}">
+                            <td th:text="${user.id}"></td>
+                            <td th:text="${user.username}"></td>
+                            <td th:text="${user.nickname}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.gender}"></td>
+                            <td th:text="${user.birth}"></td>
+                            <td th:text="${user.authorities}"></td>
+                            <td th:text="${user.state}"></td>
+                            <td>
+                                <div>
+                                    <a class="hjx-edit-user" data-toggle="modal"
+                                       data-target="#updateModel" role="button"
+                                       th:attr="userId=${user.id}">
+                                        编辑
+                                    </a>
+                                    <a class="hjx-delete-user" role="button"
+                                       th:attr="userId=${user.id}">
+                                        删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div th:replace="~{fragments/page :: page}">...</div>
+    </div>
+</div>
+
+<!--/* Modal */-->
+<div class="modal fade" id="updateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+            </div>
+            <div class="modal-body" id="userInfo">
+                <!--/*用户信息内容区域*/-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="submitEdit">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/admin/userList.js" th:src="@{/js/admin/userList.js}"></script>

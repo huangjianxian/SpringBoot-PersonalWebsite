@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bgheader :: bgheader}">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="hjx-left hjx-margin-left">
+            <a role="button" class="btn btn-primary" type="button" th:href="@{/admin/diaries/add}">新增日记</a>
+        </div>
+    </div>
+</div>
+
+<div id="mainContainer" class="container-fluid">
+    <div id="mainContainerRepleace" class="row">
+        <div class="col-lg-12">
+            <h2 class="sub-header">All Diaries</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover hjx-table">
+                    <thead>
+                    <tr class="info">
+                        <th width="5%">ID</th>
+                        <th width="15%">标题</th>
+                        <th width="50%">内容</th>
+                        <th width="10%">创建时间</th>
+                        <th width="5%">状态</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="diary : ${diaryModel.diaryList}">
+                        <td th:text="${diary.id}"></td>
+                        <td th:text="${diary.title}"></td>
+                        <td th:text="${diary.content}"></td>
+                        <td th:text="${#dates.format(diary.createTime,'YYYY-MM-dd')}"></td>
+                        <td th:text="(${diary.state == 1})?'已发布':'已下线'"></td>
+                        <td>
+                            <div>
+                                <a class="hjx-edit-diary" role="button" th:href="'/admin/diaries/edit/' + ${diary.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-bianji"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-online-diary" th:if="${diary.state eq 0}"  role="button" th:attr="diaryId=${diary.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-shangxian"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-offline-diary" th:if="${diary.state eq 1}" role="button" th:attr="diaryId=${diary.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-xiaxianx"></use>
+                                    </svg>
+                                </a>
+                                <a class="hjx-delete-diary" role="button" th:attr="blogId=${diary.id}">
+                                    <svg class="icon hjx-icon-mini hjx-margin-top-mini" aria-hidden="true">
+                                        <use xlink:href="#icon-shanchu"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div th:replace="~{fragments/page :: page}">...</div>
+    </div>
+</div>
+<!--/*footer*/-->
+<div th:replace="~{fragments/bgfooter :: bgfooter}">...</div>
+<script src="../../../static/js/admin/diary.js" th:src="@{/js/admin/diary.js}"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*footer*/-->
+<div class="well hjx-footer" th:fragment="footer">
+    <div class="hjx-margin-bottom-mini">© 2019 Jonty Hua 版权所有</div>
+    <a href="http://www.miitbeian.gov.cn">粤ICP备19030607号</a><br>
+
+
+    <!--/* jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) */-->
+    <script th:src="@{/js/jquery.js}" type="text/javascript"></script>
+    <!--/* 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 */-->
+    <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+    <!--/*消息提示插件*/-->
+    <script th:src="@{/js/toastr.js}" type="text/javascript"></script>
+    <!--/*表单验证插件*/-->
+    <script th:src="@{/js/jquery.validate.js}" type="text/javascript"></script>
+    <script th:src="@{/js/additional-methods.js}" type="text/javascript"></script>
+    <script src="../../static/js/bootstrap-datepicker.js" th:src="@{/js/bootstrap-datepicker.js}" type="text/javascript"></script>
+    <script src="../../static/editormd/editormd.js" th:src="@{/editormd/editormd.js}" type="text/javascript"></script>
+
+    <!--分页-->
+    <script src="../../static/js/thymeleaf-bootstrap-paginator.js" th:src="@{/js/thymeleaf-bootstrap-paginator.js}" type="text/javascript"></script>
+
+    <script th:src="@{/js/register.js}" type="text/javascript"></script>
+    <script th:src="@{/js/cropbox.js}" type="text/javascript"></script>
+    <!--阿里云图标-->
+    <script th:src="@{/iconfont/iconfont.js}" type="text/javascript"></script>
+    <!--共同的js-->
+    <script th:src="@{/js/common.js}" type="text/javascript"></script>
+</div>
+</body>
+</html>
